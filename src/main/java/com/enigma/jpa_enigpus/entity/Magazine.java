@@ -1,21 +1,19 @@
 package com.enigma.jpa_enigpus.entity;
 
-public class novel {
+public class Magazine {
     private int id;
-    private  String author;
     private String title;
     private int year;
-    private String publiser;
+    private PeriodType period;
 
-    public novel(int id, String author, String title, int year, String publiser) {
+    public Magazine(int id, String title, int year, PeriodType period) {
         this.id = id;
-        this.author = author;
         this.title = title;
         this.year = year;
-        this.publiser = publiser;
+        this.period = period;
     }
 
-    public novel() {
+    public Magazine() {
     }
 
     public int getId() {
@@ -24,14 +22,6 @@ public class novel {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public String getTitle() {
@@ -50,11 +40,11 @@ public class novel {
         this.year = year;
     }
 
-    public String getPubliser() {
-        return publiser;
+    public PeriodType getPeriod() {
+        return period;
     }
 
-    public void setPubliser(String publiser) {
-        this.publiser = publiser;
+    public void setPeriod(PeriodType period) {
+        this.period = period;
     }
 }

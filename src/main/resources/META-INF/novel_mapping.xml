@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+                 version="2.0">
+
+    <entity class="com.enigma.jpa_enigpus.entity.Novel">
+        <table name="novel"/>
+        <attributes>
+            <id name="id">
+                <generated-value strategy="SEQUENCE" generator="novel_seq"/>
+                <sequence-generator name="novel_seq" sequence-name="novel_id_seq" allocation-size="1" initial-value="1" />
+            </id>
+            <basic name="author">
+                <column name="author" />
+            </basic>
+            <basic name="title">
+                <column name="title" />
+            </basic>
+            <basic name="year">
+                <column name="year" />
+            </basic>
+            <basic name="publisher">
+                <column name="publisher" />
+            </basic>
+        </attributes>
+
+    </entity>
+</entity-mappings>
