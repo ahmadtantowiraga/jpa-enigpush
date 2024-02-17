@@ -48,15 +48,14 @@ public class MenuView {
                         getAllBook();
                         break;
                     case 3:
-
+                        findByName();
                         break;
                     case 4:
-
+                        updateBookById();
                         break;
                     case 5:
 
                         break;
-
                 }
             }
         }
@@ -123,6 +122,35 @@ public class MenuView {
                 System.out.println("Period     : " + magazine.getPeriod());
                 System.out.println();
             });
+        }
+    }
+    private void updateBookById(){
+        System.out.println("1. Add Novel");
+        System.out.println("2. Add Magazine");
+        int book=Utility.inputBookOption();
+        if (book==1){
+            Integer id=Utility.inputIntUtil("Input the id for find Novel : ");
+            Novel novel=novelRepository.findById(id);
+            if (novel == null){
+                System.out.println("id Not Found\n");
+            }else{
+                novel.setAuthor(Utility.minMaxWord(Utility.inputUtil("Input author name :")));
+                novel.setTitle(Utility.minMaxWord(Utility.inputUtil("Input Title : ")));
+                novel.setYear(Utility.inputIntUtil("Input Year : "));
+                novel.setPublisher(Utility.minMaxWord(Utility.inputUtil("Input Publisher : ")));
+                novelRepository.update(novel);
+            }
+        }else{
+            Integer id=Utility.inputIntUtil("Input the id for find Magazine : ");
+            Magazine magazine=magazineRepository.findById(id);
+            if (magazine==null){
+                System.out.println("id Not Found\n");
+            }else{
+                magazine.setPeriod(Utility.inputPeriodType().name());
+                magazine.setTitle(Utility.minMaxWord(Utility.inputUtil("Input Title : ")));
+                magazine.setYear(Utility.inputIntUtil("Input Year : "));
+                magazineRepository.update(magazine);
+            }
         }
     }
 

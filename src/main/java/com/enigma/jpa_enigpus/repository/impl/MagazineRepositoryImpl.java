@@ -14,7 +14,6 @@ public class MagazineRepositoryImpl implements MagazineRepository {
     public MagazineRepositoryImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
-
     @Override
     public void save(Magazine magazine) {
         EntityTransaction transaction=entityManager.getTransaction();
@@ -22,15 +21,26 @@ public class MagazineRepositoryImpl implements MagazineRepository {
         entityManager.persist(magazine);
         transaction.commit();
     }
-
     @Override
     public List<Magazine> getAllBook() {
         return entityManager.createQuery("FROM Magazine", Magazine.class).getResultList();
     }
-
     @Override
     public List<Magazine> findByName(String title) {
         List<Magazine> magazineList=entityManager.createQuery("FROM Magazine", Magazine.class).getResultList();
-        return magazineList.stream().filter(magazine -> magazine.getTitle().equals(title)).toList();
+        return magazineList.stream().filter(magazine -> magazine.getTitle().toLowerCase().equals(title.toLowerCase())).toList();
+    }
+
+    @Override
+    public Magazine findById(Integer id) {
+        return entityManager.find(Magazine.class, id);
+    }
+
+    @Override
+    public void update(Magazine magazine) {
+        EntityTransaction transaction=entityManager.getTransaction();
+        transaction.begin();
+        entityManager.merge(magazine);
+        transaction.commit();
     }
 }

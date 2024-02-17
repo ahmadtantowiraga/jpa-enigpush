@@ -8,4 +8,6 @@ public interface NovelRepository {
     void save(Novel novel);
     List<Novel> getAllBook();
     List<Novel> findByName(String title);
+    void update(Novel novel);
+    Novel findById(Integer id);
 }

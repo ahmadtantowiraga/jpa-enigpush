@@ -31,6 +31,19 @@ public class NovelRepositoryImpl implements NovelRepository {
     @Override
     public List<Novel> findByName(String title) {
         List<Novel> novelList=entityManager.createQuery("FROM Novel",Novel.class).getResultList();
-        return novelList.stream().filter(novel -> novel.getTitle().equals(title)).toList();
+        return novelList.stream().filter(novel -> novel.getTitle().toLowerCase().equals(title.toLowerCase())).toList();
+    }
+
+    @Override
+    public void update(Novel novel) {
+        EntityTransaction transaction=entityManager.getTransaction();
+        transaction.begin();
+        entityManager.merge(novel);
+        transaction.commit();
+    }
+
+    @Override
+    public Novel findById(Integer id) {
+        return entityManager.find(Novel.class,id);
     }
 }
