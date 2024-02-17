@@ -1,12 +1,12 @@
 package com.enigma.jpa_enigpus.entity;
 
 public class Magazine {
-    private int id;
+    private Integer id;
     private String title;
-    private int year;
+    private Integer year;
     private PeriodType period;
 
-    public Magazine(int id, String title, int year, PeriodType period) {
+    public Magazine(Integer id, String title, Integer year, PeriodType period) {
         this.id = id;
         this.title = title;
         this.year = year;
@@ -16,11 +16,11 @@ public class Magazine {
     public Magazine() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -32,11 +32,11 @@ public class Magazine {
         this.title = title;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 

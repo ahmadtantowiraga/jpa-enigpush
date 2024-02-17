@@ -1,13 +1,13 @@
 package com.enigma.jpa_enigpus.entity;
 
 public class Novel {
-    private int id;
+    private Integer id;
     private  String author;
     private String title;
-    private int year;
+    private Integer year;
     private String publisher;
 
-    public Novel(int id, String author, String title, int year, String publisher) {
+    public Novel(Integer id, String author, String title, Integer year, String publisher) {
         this.id = id;
         this.author = author;
         this.title = title;
@@ -18,7 +18,7 @@ public class Novel {
     public Novel() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -42,11 +42,11 @@ public class Novel {
         this.title = title;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
