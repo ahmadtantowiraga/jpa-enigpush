@@ -3,9 +3,23 @@ package com.enigma.jpa_enigpus.view;
 import com.enigma.jpa_enigpus.entity.Magazine;
 import com.enigma.jpa_enigpus.entity.Novel;
 import com.enigma.jpa_enigpus.entity.PeriodType;
+import com.enigma.jpa_enigpus.repository.MagazineRepository;
+import com.enigma.jpa_enigpus.repository.NovelRepository;
+import com.enigma.jpa_enigpus.repository.impl.MagazineRepositoryImpl;
+import com.enigma.jpa_enigpus.repository.impl.NovelRepositoryImpl;
+import com.enigma.jpa_enigpus.util.JpaUtil;
 import com.enigma.jpa_enigpus.util.Utility;
+import jakarta.persistence.EntityManager;
 
 public class MenuView {
+    private final NovelRepository novelRepository;
+    private final MagazineRepository magazineRepository;
+
+    public MenuView(EntityManager entityManager) {
+        this.novelRepository = new NovelRepositoryImpl(entityManager);
+        this.magazineRepository=new MagazineRepositoryImpl(entityManager);
+    }
+
     public  void run(){
         showMenu();
     }
@@ -56,7 +70,7 @@ public class MenuView {
             Integer year=Utility.inputIntUtil("Input Year : ");
             String publisher=Utility.minMaxWord(Utility.inputUtil("Input Publisher : "));
             Novel novel=new Novel(null, author,title,year,publisher);
-
+            novelRepository.save(novel);
         }else{
             String title=Utility.minMaxWord(Utility.inputUtil("Input Title : "));
             Integer year=Utility.inputIntUtil("Input Year : ");

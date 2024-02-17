@@ -1,23 +1,22 @@
 package com.enigma.jpa_enigpus.repository.impl;
 
-import com.enigma.jpa_enigpus.entity.Novel;
-import com.enigma.jpa_enigpus.repository.NovelRepository;
-import com.enigma.jpa_enigpus.util.JpaUtil;
+import com.enigma.jpa_enigpus.entity.Magazine;
+import com.enigma.jpa_enigpus.repository.MagazineRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
-public class NovelRepositoryImpl implements NovelRepository {
+public class MagazineRepositoryImpl implements MagazineRepository {
     private final EntityManager entityManager;
 
-    public NovelRepositoryImpl(EntityManager entityManager) {
+    public MagazineRepositoryImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
     @Override
-    public void save(Novel novel) {
+    public void save(Magazine magazine) {
         EntityTransaction transaction=entityManager.getTransaction();
         transaction.begin();
-        entityManager.persist(novel);
+        entityManager.persist(magazine);
         transaction.commit();
     }
 }

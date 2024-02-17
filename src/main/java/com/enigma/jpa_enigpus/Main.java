@@ -2,6 +2,7 @@ package com.enigma.jpa_enigpus;
 
 
 import com.enigma.jpa_enigpus.entity.Novel;
+import com.enigma.jpa_enigpus.util.JpaUtil;
 import com.enigma.jpa_enigpus.view.MenuView;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -12,8 +13,11 @@ import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
-        MenuView menu=new MenuView();
+        EntityManager entityManager= JpaUtil.getEntityManager();
+        MenuView menu=new MenuView(entityManager);
         menu.run();
+        entityManager.close();
+        JpaUtil.shutdown();
 //        EntityManagerFactory emf= Persistence.createEntityManagerFactory("jpa-enigpus");
 //        EntityManager em=emf.createEntityManager();
 //        EntityTransaction transaction=em.getTransaction();
