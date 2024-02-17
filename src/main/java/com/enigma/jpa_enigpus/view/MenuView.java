@@ -76,7 +76,7 @@ public class MenuView {
             Integer year=Utility.inputIntUtil("Input Year : ");
             PeriodType period=Utility.inputPeriodType();
             Magazine magazine=new Magazine(null, title,year,period);
-
+            magazineRepository.save(magazine);
         }
 
     }
