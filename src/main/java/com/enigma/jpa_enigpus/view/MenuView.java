@@ -11,6 +11,8 @@ import com.enigma.jpa_enigpus.util.JpaUtil;
 import com.enigma.jpa_enigpus.util.Utility;
 import jakarta.persistence.EntityManager;
 
+import java.util.List;
+
 public class MenuView {
     private final NovelRepository novelRepository;
     private final MagazineRepository magazineRepository;
@@ -40,10 +42,10 @@ public class MenuView {
             }else {
                 switch (menu) {
                     case 1:
-                        addbook();
+                        addBook();
                         break;
                     case 2:
-
+                        getAllBook();
                         break;
                     case 3:
 
@@ -60,7 +62,7 @@ public class MenuView {
         }
     }
 
-    private void addbook(){
+    private void addBook(){
         System.out.println("1. Add Novel");
         System.out.println("2. Add Magazine");
         int book=Utility.inputBookOption();
@@ -78,6 +80,17 @@ public class MenuView {
             Magazine magazine=new Magazine(null, title,year,period);
             magazineRepository.save(magazine);
         }
+    }
+    private void getAllBook(){
+        System.out.println("Novel List :");
+        novelRepository.getAllBook().stream().forEach(novel -> {
+            System.out.println("id         : " + novel.getId());
+            System.out.println("Author     : " + novel.getAuthor());
+            System.out.println("Title      : " + novel.getTitle());
+            System.out.println("Year       : " + novel.getYear());
+            System.out.println("Publisher  : " + novel.getPublisher());
+            System.out.println();
+        });
 
     }
 

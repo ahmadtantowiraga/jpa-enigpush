@@ -6,6 +6,8 @@ import com.enigma.jpa_enigpus.util.JpaUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
+import java.util.List;
+
 public class NovelRepositoryImpl implements NovelRepository {
     private final EntityManager entityManager;
 
@@ -19,5 +21,10 @@ public class NovelRepositoryImpl implements NovelRepository {
         transaction.begin();
         entityManager.persist(novel);
         transaction.commit();
+    }
+
+    @Override
+    public List<Novel> getAllBook() {
+        return entityManager.createQuery("FROM Novel",Novel.class).getResultList();
     }
 }

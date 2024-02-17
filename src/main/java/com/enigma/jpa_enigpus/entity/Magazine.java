@@ -40,11 +40,11 @@ public class Magazine {
         this.year = year;
     }
 
-    public PeriodType getPeriod() {
-        return period;
+    public String getPeriod() {
+        return period.name();
     }
 
-    public void setPeriod(PeriodType period) {
-        this.period = period;
+    public void setPeriod(String period) {
+        this.period = PeriodType.valueOf(period);
     }
 }
