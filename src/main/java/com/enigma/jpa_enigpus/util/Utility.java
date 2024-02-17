@@ -30,4 +30,16 @@ public class Utility {
             }
         }
     }
+    public static int inputMenuOption(){
+        while(true) {
+            Integer menu = inputIntUtil("Input menu Option (1-6) : ");
+            if (menu < 1 || menu > 6) {
+                System.out.println("Enter the correct MENU NO (number 1-6)");
+                System.out.println("Press ENTER to continue");
+                Utility.inputUtil("");
+            } else {
+                return menu;
+            }
+        }
+    }
 }
