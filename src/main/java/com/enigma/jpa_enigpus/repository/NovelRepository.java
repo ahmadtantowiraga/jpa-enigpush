@@ -7,4 +7,5 @@ import java.util.List;
 public interface NovelRepository {
     void save(Novel novel);
     List<Novel> getAllBook();
+    List<Novel> findByName(String title);
 }

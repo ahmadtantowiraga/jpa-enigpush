@@ -1,9 +1,12 @@
 package com.enigma.jpa_enigpus.repository.impl;
 
 import com.enigma.jpa_enigpus.entity.Magazine;
+import com.enigma.jpa_enigpus.entity.Novel;
 import com.enigma.jpa_enigpus.repository.MagazineRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+
+import java.util.List;
 
 public class MagazineRepositoryImpl implements MagazineRepository {
     private final EntityManager entityManager;
@@ -18,5 +21,16 @@ public class MagazineRepositoryImpl implements MagazineRepository {
         transaction.begin();
         entityManager.persist(magazine);
         transaction.commit();
+    }
+
+    @Override
+    public List<Magazine> getAllBook() {
+        return entityManager.createQuery("FROM Magazine", Magazine.class).getResultList();
+    }
+
+    @Override
+    public List<Magazine> findByName(String title) {
+        List<Magazine> magazineList=entityManager.createQuery("FROM Magazine", Magazine.class).getResultList();
+        return magazineList.stream().filter(magazine -> magazine.getTitle().equals(title)).toList();
     }
 }

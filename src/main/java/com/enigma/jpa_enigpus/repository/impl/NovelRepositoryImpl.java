@@ -27,4 +27,10 @@ public class NovelRepositoryImpl implements NovelRepository {
     public List<Novel> getAllBook() {
         return entityManager.createQuery("FROM Novel",Novel.class).getResultList();
     }
+
+    @Override
+    public List<Novel> findByName(String title) {
+        List<Novel> novelList=entityManager.createQuery("FROM Novel",Novel.class).getResultList();
+        return novelList.stream().filter(novel -> novel.getTitle().equals(title)).toList();
+    }
 }

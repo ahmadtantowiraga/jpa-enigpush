@@ -91,7 +91,39 @@ public class MenuView {
             System.out.println("Publisher  : " + novel.getPublisher());
             System.out.println();
         });
-
+        System.out.println("Magazine List :");
+        magazineRepository.getAllBook().stream().forEach(magazine -> {
+            System.out.println("id         : " + magazine.getId());
+            System.out.println("Title      : " + magazine.getTitle());
+            System.out.println("Year       : " + magazine.getYear());
+            System.out.println("Period     : " + magazine.getPeriod());
+            System.out.println();
+        });
+    }
+    private void findByName(){
+        System.out.println("1. Add Novel");
+        System.out.println("2. Add Magazine");
+        int book=Utility.inputBookOption();
+        if (book==1){
+            String name=Utility.inputUtil("Input the title for find Novel : ");
+            novelRepository.findByName(name).stream().forEach(novel -> {
+                System.out.println("id         : " + novel.getId());
+                System.out.println("Author     : " + novel.getAuthor());
+                System.out.println("Title      : " + novel.getTitle());
+                System.out.println("Year       : " + novel.getYear());
+                System.out.println("Publisher  : " + novel.getPublisher());
+                System.out.println();
+            });
+        }else{
+            String name=Utility.inputUtil("Input the title for find Magazine : ");
+            magazineRepository.findByName(name).stream().forEach(magazine -> {
+                System.out.println("id         : " + magazine.getId());
+                System.out.println("Title      : " + magazine.getTitle());
+                System.out.println("Year       : " + magazine.getYear());
+                System.out.println("Period     : " + magazine.getPeriod());
+                System.out.println();
+            });
+        }
     }
 
 }
