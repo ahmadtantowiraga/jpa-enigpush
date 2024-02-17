@@ -10,4 +10,5 @@ public interface NovelRepository {
     List<Novel> findByName(String title);
     void update(Novel novel);
     Novel findById(Integer id);
+    void delete(Novel novel);
 }

@@ -43,4 +43,12 @@ public class MagazineRepositoryImpl implements MagazineRepository {
         entityManager.merge(magazine);
         transaction.commit();
     }
+
+    @Override
+    public void delete(Magazine magazine) {
+        EntityTransaction transaction=entityManager.getTransaction();
+        transaction.begin();
+        entityManager.remove(magazine);
+        transaction.commit();
+    }
 }

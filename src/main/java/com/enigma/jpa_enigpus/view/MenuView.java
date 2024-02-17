@@ -54,7 +54,7 @@ public class MenuView {
                         updateBookById();
                         break;
                     case 5:
-
+                        deleteBook();
                         break;
                 }
             }
@@ -129,7 +129,7 @@ public class MenuView {
         System.out.println("2. Add Magazine");
         int book=Utility.inputBookOption();
         if (book==1){
-            Integer id=Utility.inputIntUtil("Input the id for find Novel : ");
+            Integer id=Utility.inputIntUtil("Input the id for Update Novel : ");
             Novel novel=novelRepository.findById(id);
             if (novel == null){
                 System.out.println("id Not Found\n");
@@ -150,6 +150,28 @@ public class MenuView {
                 magazine.setTitle(Utility.minMaxWord(Utility.inputUtil("Input Title : ")));
                 magazine.setYear(Utility.inputIntUtil("Input Year : "));
                 magazineRepository.update(magazine);
+            }
+        }
+    }
+    private void deleteBook(){
+        System.out.println("1. Add Novel");
+        System.out.println("2. Add Magazine");
+        int book=Utility.inputBookOption();
+        if (book==1){
+            Integer id=Utility.inputIntUtil("Input the id for Delete Novel : ");
+            Novel novel=novelRepository.findById(id);
+            if (novel==null){
+                System.out.println("id Not Found");
+            }else{
+                novelRepository.delete(novel);
+            }
+        }else{
+            Integer id=Utility.inputIntUtil("Input the id for Delete Magazine : ");
+            Magazine magazine=magazineRepository.findById(id);
+            if (magazine==null){
+                System.out.println("id Not Found");
+            }else{
+                magazineRepository.delete(magazine);
             }
         }
     }

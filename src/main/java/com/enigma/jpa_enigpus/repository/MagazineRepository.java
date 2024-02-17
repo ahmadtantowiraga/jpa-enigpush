@@ -10,4 +10,5 @@ public interface MagazineRepository {
     List<Magazine> findByName(String title);
     Magazine findById(Integer id);
     void update(Magazine magazine);
+    void delete(Magazine magazine);
 }

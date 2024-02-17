@@ -46,4 +46,12 @@ public class NovelRepositoryImpl implements NovelRepository {
     public Novel findById(Integer id) {
         return entityManager.find(Novel.class,id);
     }
+
+    @Override
+    public void delete(Novel novel) {
+        EntityTransaction transaction=entityManager.getTransaction();
+        transaction.begin();;
+        entityManager.remove(novel);
+        transaction.commit();
+    }
 }
